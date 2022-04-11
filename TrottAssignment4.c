@@ -17,11 +17,14 @@ int num_in_circle_for_batch(int num_tries){
 
     for (int i=0; i<num_tries; i++)
     {
+        //generate initial seed
         unsigned* seed;
         *seed = (unsigned)(time(NULL) * (long) pthread_self());
 
-        //get random points
+        //get random point
         double x = (double)rand_r(seed)/RAND_MAX *2 -1  ;
+        //modify seed
+        *seed *= 42;
         double y = (double)rand_r(seed)/RAND_MAX *2 -1  ;
    
         double z = sqrt((x*x)+(y*y));
